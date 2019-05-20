@@ -1,3 +1,14 @@
+## About Pokedec
+The Pokedec is a small game in which there are two parts:
+-> The wining part 
+-> The Losing part
+
+There are 8 pokemon card and half of them are from winning part (4 cards) and another half are from loosing(4 cards) part.
+
+Winning part is the one with higher total experience.
+
+Total experience is calculated by summing up the experience of four individual pokemon experience (picked randomly).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
