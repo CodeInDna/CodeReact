@@ -1,0 +1,53 @@
+@font-face{
+	font-family: "MyFont";
+	src: local('MyFont'), url(./fonts/pokemon/PokemonSolid.ttf) format('truetype');
+}
+@font-face{
+	font-family: "Pokemon";
+	src: local('Pokemon'), url(./fonts/pokemon/PokemonGB.ttf) format('truetype');
+}
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+h1{
+	font-family: 'MyFont';
+	font-size: 50px;
+	-webkit-text-stroke: 1.3px #3267B1;
+	color: #FFCB08;
+	letter-spacing: 3px;
+}
+.title{
+	padding-right: 10px;
+}
+.Pokedec{
+	padding-bottom: 3rem;
+}
+.Pokedec-cards{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.Pokedec-tot-exp{
+	font-family: 'Pokemon';
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #642BF8;
+}
+
+.Pokedec-exp{
+	font-family: 'Pokemon';
+	font-size: 20px;
+	color: #EF4036;
+}
+
+.Pokedec-winner{
+	font-family: 'Press Start 2P', cursive;
+	color: #3BF836;
+	font-size: 30px;
+}
+
+.Pokedec-looser{
+	font-family: 'Press Start 2P', cursive;
+	color: #FF1A00;
+	font-size: 30px;
+}
