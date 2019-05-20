@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
+import './Pokecard.css';
 
+const POKE_API = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/';
+
+function threeDigit(num){
+	if(num.toString().length === 1) return `00${num}`;
+	if(num.toString().length === 2) return `0${num}`;
+	return num;
+}
+console.log(threeDigit(1));
 class Pokecard extends Component{
 	render(){
 		const {id, name, type, base_experience: exp} = this.props.pokemon;
-		const imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+		const num = threeDigit(id);
+		const imgSrc = `${POKE_API}${num}.png`;
 		return(
 			<div className="Pokecard">
-				<h1>Pokedec</h1>
 				<h3>{name}</h3>
 				<img src={imgSrc} alt={name}/>
-				<h4>type: {type}</h4>
-				<h4>exp: {exp}</h4>
+				<h4>Type: {type}</h4>
+				<h4>Exp: {exp}</h4>
 			</div>
 		)
 	}
