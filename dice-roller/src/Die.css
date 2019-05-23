@@ -1,0 +1,18 @@
+.Die{
+	font-size: 10em;
+	padding: .25em;
+	color: #C71818;
+}
+
+.shaking{
+	animation: roll 1s linear;
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,41 @@
+.RollDice-btn {
+  width: 14rem;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 2rem;
+}
+
+.btn {
+  background-color: white; 
+  color:  #3867AF; 
+  border: 2px solid #3867AF;
+  font-family: 'Lobster', cursive;
+  font-size: 1.4em;
+}
+
+.dice-roll{
+	font-size: 1.4em;
+	color: #C71818;
+}
+
+.btn:hover{
+  background-color: #3867AF;
+  color: white;
+}
+
+.btn:hover > i{
+  color: white;
+}
+
+#disabled{
+	cursor: auto;
+}
