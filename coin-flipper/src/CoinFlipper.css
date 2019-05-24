@@ -1,0 +1,33 @@
+.CoinFlipper{
+  display: inline-block;
+  font-family:'Ubuntu', sans-serif;
+}
+.CoinFlipper-button{
+  width: 10em;
+  height: 3em;
+  background-color: #015156;
+  border: 1px solid #015156;
+  color: white;
+  font-size: 20px;
+  margin: 1em;
+  border-radius: 3px; 
+  font-family:'Ubuntu', sans-serif;
+  letter-spacing: 0.2em;
+}
+
+.CoinTracker{
+  width: 18em;
+  background-color: #159F92;
+  text-align: center;
+  color: white;
+  padding: .2em 0.2em;
+  border-radius: 4px; 
+}
+
+span{
+  color: white;
+  font-size: 1.2em;
+  background-color: #015156;
+  padding: 0 2px;
+  border-radius: 4px;
+}

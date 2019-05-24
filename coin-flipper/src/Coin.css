@@ -1,0 +1,17 @@
+.Coin img{
+  width: 200px;
+  height: 200px;
+}
+
+.flip{
+  animation: flip 0.5s linear;
+}
+
+@keyframes flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
