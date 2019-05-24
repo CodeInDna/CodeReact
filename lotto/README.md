@@ -4,7 +4,7 @@ Lotto betting is making a bet on the result of the official lottery draw — spe
 
 You pick the numbers that you think will be drawn and if you guess correctly, you will win prizes.<br>
 
-We are building a lotto gane which generate the number of balls specified which contains the random number
+We are building a lotto game which generate the number of balls specified which contains the random number
 between 1 to 40(defaultProps or we can specify the limit).<br>
 
 We are able to control title, num balls to show and the max value for generating random numbers.<br>
