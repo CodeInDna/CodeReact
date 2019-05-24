@@ -1,0 +1,28 @@
+
+.Lottery{
+	width: 50em;
+	border: 2px solid #44C1D0;
+	padding: 1em 0 2em 0;
+	border-radius: 20px;
+	text-align: center;
+	margin: 1em auto auto;
+	background-color: #FEF2F4;
+}
+
+.Lottery-button{
+	background-color: #44C1D0 ;
+	width: 20rem;
+	font-size: 1.5rem;
+	height: 5rem;
+	border: 1px solid #44C1D0 ;
+	cursor: pointer;
+	color: white;
+	font-family: 'Josefin Sans', sans-serif;
+}
+*:focus {outline:none}
+
+
+h1{
+	font-family: 'Stylish', sans-serif;
+	font-size: 2.5em;
+}

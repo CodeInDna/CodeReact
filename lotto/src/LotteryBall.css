@@ -2,13 +2,13 @@
 	display: inline-block;
 	width: 3em;
 	height: 2.25em;
-	color: white;
+	color: #C2185B;
 	border-radius: 50%;
-	background-color: slateblue;
+	background-color: #F4B8C7;
 	text-align: center;
 	padding-top: 0.75em;
 	font-weight: bold;
 	margin-right: 1.5em;
-	font-size: 1.5em;
-	margin-top: 2em;
+	font-size: 1.6em;
+	margin-bottom: 2em;
 }
