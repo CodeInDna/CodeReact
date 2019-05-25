@@ -9,6 +9,7 @@
   border: 10px solid white;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.27),
     0 0 40px rgba(0, 0, 0, 0.06) inset;
+  height: 280px;
 }
 
 .Hangman h1 {
@@ -20,7 +21,7 @@
 
 .Hangman-word {
   letter-spacing: 1em;
-  margin: 0.4em -1em 0.2em 0;
+  margin: 0.2em -1em 0.2em 0;
   font-size: 2rem;
 }
 
@@ -40,19 +41,33 @@
   margin: 5px 2px 2px 2px;
   letter-spacing: 1px;
   outline: none;
-  background: #ffc107;
+  background: #AA6028;
   color: #fff;
-  box-shadow: 0 6px #ff9800;
+  box-shadow: 0 6px #7F4824;
   border-radius: 5px;
   padding-top: 4px;
 }
 
 .Hangman button:hover {
-  background-color: #ff9800;
+  background-color: #7F4824;
 }
 
 .Hangman button:disabled {
-  background: #bdbdbd;
+  background: #7F4824;
   color: #eeeeee;
-  box-shadow: 0 6px #9e9e9e;
+  box-shadow: 0 6px #7F4824;
+}
+
+#reset{
+  width: auto;
+  background-color: #6197EF;
+  box-shadow: 0 6px #558BE3;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin: auto;*/
+}
+
+#reset:hover {
+  background-color: #558BE3;
 }
