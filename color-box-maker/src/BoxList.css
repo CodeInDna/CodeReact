@@ -1,0 +1,18 @@
+.BoxList{
+	border: 2px solid #138496;
+	border-radius: 20px;
+}
+.BoxList-h {
+	text-align: center;
+	color: #138496;
+	margin: 10px 0px;
+}
+
+.BoxList-boxes{
+	margin: 10px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex: 1;
+}
