@@ -1,0 +1,99 @@
+.TodoList-content{
+	margin: auto;
+	padding:1rem 3rem 3rem;
+	max-width:500px;
+	background:#6B77C0;
+	color:#FFF;
+}
+/* .TodoList h1 {
+    text-align:center;
+    font-weight:normal;
+    font-size:2.6rem;
+    letter-spacing:0.05em;
+} */
+.TodoList-title {
+	position: absolute;
+	/*left: 20px;*/
+	/*text-align: center;*/
+    top: 1em;
+    left: 7.5em;
+	display:block;
+	font-size:1rem;
+	margin-bottom:0.7rem;
+	/*margin-left:3px;*/
+	margin-top:0.2rem;  
+	padding-bottom: 4px;
+    border-bottom:1px solid rgba(255,255,255,.3); 
+}
+/* FORM */
+.Todo-form {
+	margin-top:2rem;
+	display:flex;
+	flex-wrap:wrap;
+}
+.Todo-form h4 {
+	min-width:100%;
+	margin-bottom:.5rem;
+	font-size:1.3rem;
+	font-weight: 200;
+}
+.Todo-form input {
+	flex-grow:1;
+	border:none;
+	background:#f7f1f1;
+	padding:0 1.5em;
+	font-size:initial;
+}
+.Todo-form button {
+	padding:0 1.3rem;
+	background:#585E9F;
+	color:white;
+	text-transform:uppercase;
+	font-weight:bold;
+	border:1px solid #585E9F;
+	margin-left:5px;
+	cursor:pointer;
+	transition:background .2s ease-out;
+}
+button:focus {outline:0;}
+.Todo-form button:hover {
+	background:#3D407A;
+}
+.Todo-form input, 
+.Todo-form button {
+	font-family:'Quicksand', sans-serif;
+	height:3rem;
+}
+
+.TodoList{
+	position: relative;
+	overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 16px 0 rgba(27,27,53,0.2),0 6px 20px 0 rgba(27,27,53,0.19) !important;
+}
+.TodoList img{
+	width: 500px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.TodoList-day{
+	font-family: 'Raleway', sans-serif;
+	position: absolute;
+    left: 20px;
+    top: 4.4em;
+    min-width: 87px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    padding: 13px 0 0 2rem;
+    font-size: 44px;
+    display: grid;
+    text-align: left;
+}
+
+.TodoList-date{
+	font-size: 28px;
+	padding-top: 6px;
+}

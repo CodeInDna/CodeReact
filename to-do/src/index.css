@@ -1,0 +1,15 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html, body {
+ 	font-size: 1.1rem;
+ 	font-family: "Quicksand", sans-serif;
+ 	height: 100%;
+ 	background: url('./scene.jpg');
+  	background-repeat: no-repeat;
+  	background-size: 100%;
+}
+
+
