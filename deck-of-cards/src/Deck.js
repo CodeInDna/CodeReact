@@ -28,7 +28,7 @@ class Deck extends Component{
 
       // ***if no cards left throw error
       if(!response.data.success) throw new Error("No cards remaining!");
-      console.log(response.data);
+      
       let card = response.data.cards[0];
 
       // ***otherwise set the state with new cards
