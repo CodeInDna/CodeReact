@@ -4,7 +4,7 @@ This app works with React LifeCycle Methods (componentDidMount).<br>
 
 Whenever the "Shuffle" button is Clicked, a request is made to an API which brings a card infomation like img source, name etc<br>
 
-Every time the user clicks, it will display a new card until the deck is empty. Once the deck is empty it will alert the user about it.<br>
+It will display a new card everytime user clicks the button, until the deck is empty. Once the deck is empty, it will alert the user about it.<br>
 
 This app includes react components, state, props, and lifecycle event methods. <br>
 
