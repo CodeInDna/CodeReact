@@ -1,0 +1,57 @@
+.Deck-card {
+ 	margin-top: 80px;
+} 
+.Deck-title{
+	/*font-family: 'Oleo Script Swash Caps', cursive;*/
+	/*font-family: 'Orbitron', sans-serif;*/
+/*font-family: 'Black Ops One', cursive;*/
+	font-family: 'Berkshire Swash', cursive;
+	font-size: 3em;
+	color: #fffaf0;
+	font-size: 100px;
+}
+
+.Deck-small-title{
+	font-family: 'Black Ops One', cursive;
+	letter-spacing: 1px;
+	font-size: 20px;
+	font-weight: 100;
+}
+
+.Deck-Diamond, .Deck-heart{
+	color: #9F0922;
+}
+
+.Deck-Spade, .Deck-Club{
+	color: #000;
+}
+
+.Deck-Card{
+	font-size: 3em;
+	vertical-align: middle;
+}
+
+.Deck-Btn{
+	background-color: #EDAC1B;
+	width: 13em;
+	height: 3em;
+	color: black;
+	border: 1px solid #EDAC1B;
+	text-transform: uppercase;
+	border-radius: 25px;
+	cursor: pointer;
+	box-shadow: 2px black;
+	font-size: 15px;
+	font-family: 'Orbitron', sans-serif;
+	font-weight: bold;
+    letter-spacing: 0.3em;
+    box-shadow: 5px 5px 5px black;
+}
+
+.Deck-Btn:hover{
+	background-color: #F7D131;
+}
+
+.Deck-Btn:focus{
+	outline: none;
+}
