@@ -1,0 +1,105 @@
+.JokeList{
+	display: flex;
+	width: 80%;
+	height: 80%;
+}
+
+.JokeList-sidebar{
+	background: #6D3CA1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 30%;
+	text-align: center;
+	box-shadow:  0px 19px 38px rgb(0, 0, 0, 0.3), 0px 15px 12px rgb(0, 0, 0, 0.1), inset 0 0 25px #4A148C;
+	z-index: 2;
+	border-radius: 10px;
+}
+
+img{
+	width: 50%;
+	border-radius: 50%;
+	box-shadow:  0px 19px 38px rgb(0, 0, 0, 0.3), 0px 15px 12px rgb(0, 0, 0, 0.1);
+}
+
+.JokeList-sidebar img:hover{
+	animation: shake 1s cubic-bezier(.3,.06,.2,.9) infinite;
+}
+.JokeList-title{
+	font-size: 4rem;
+	margin: 2rem;
+	color: white;
+	font-weight: 300;
+	letter-spacing: 0.6rem;
+}
+
+.JokeList-title span{
+	font-weight: 700;
+	letter-spacing: 0;
+}
+
+.JokeList-jokes{
+	height: 90%;
+	background-color: white;
+	align-self: center;
+	width: 70%;
+	overflow: scroll;
+	box-shadow:  0px 19px 38px rgb(0, 0, 0, 0.3), 0px 15px 12px rgb(0, 0, 0, 0.1);
+}
+
+.Joke-emoji{
+	font-size: 3rem;
+	margin-left: auto;
+}
+
+.JokeList-spinner{
+	color: white;
+	text-align: center;
+}
+
+.JokeList-more{
+	font-size: 1.5rem;
+	width: 50%;
+	border-radius: 2rem;
+	padding: 1rem 2rem;
+	background: linear-gradient(
+  	 135deg,
+     rgb(156,39, 176, 1) 0%,
+     rgb(179,229, 252, 1) 50%,
+     rgb(240,98, 146, 1) 50%,
+     rgb(248,192, 157, 1) 100%
+    );
+    transition: 0.8s cubic-bezier(0.2, 1, 0.2, 1);
+    word-spacing: 0.8rem;
+    border: 1px solid #6D3CA1;
+    margin: 2rem;
+	color: white;
+	font-weight: 700;
+	box-shadow:  0px 19px 38px rgb(0, 0, 0, 0.3), 0px 15px 12px rgb(0, 0, 0, 0.1);
+	cursor: pointer;
+}	
+
+.JokeList-more:hover{
+	transform: translateY(-2px) ;
+	box-shadow:  0px 15px 30px rgb(0, 0, 0, 0.25);
+}
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, -1px, 0) rotate(5deg); 
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, -4px, 0) rotate(-2deg);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, -1px, 0) rotate(3deg);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 2px, 0) rotate(-4deg);
+  }
+}
