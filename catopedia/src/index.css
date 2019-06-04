@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+	100deg,
+	#35AABB ,
+	#79C4D1 ,
+	#B4DEE4,
+	#B4DEE4,
+	#B4DEE4,
+	#79C4D1,
+	#35AABB 
+
+  	)
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

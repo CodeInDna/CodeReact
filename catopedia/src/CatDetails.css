@@ -1,0 +1,48 @@
+.CatDetails{
+	font-family: 'Raleway', sans-serif;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+       -moz-box-shadow: 0 10px 6px -6px #777;
+            box-shadow: 0 10px 6px -6px #777;
+}
+
+
+.CatDetails img{
+	width: 100%;
+}
+
+.CatDetails-title{
+	font-size: 1.2em;
+	font-weight: 700;
+	font-family: 'Unica One', cursive;
+}
+
+.CatDetails-info{
+	font-weight: 400;
+	font-size: 1.1em;
+}
+
+.CatDetails-header{
+	font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.CatDetails-paw{
+	color: white;
+}
+
+.card-footer,.CatDetails-footer{
+	/*font-weight: 500 !important;*/
+	font-family: 'Unica One', cursive;
+	font-size: 1.2em;
+	font-weight: 500;
+}
+
+.card-footer a{
+	text-decoration: none;
+	color: inherit;
+}
+
+.card-footer a:hover{
+	text-decoration: none;
+	-webkit-text-stroke: 0.5px white;
+	color: #17a2b8;
+}
