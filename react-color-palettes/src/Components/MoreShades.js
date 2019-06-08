@@ -3,6 +3,9 @@ import ColorBox from './ColorBox';
 import Footer from './Footer';
 import NavBar from './NavBar';
 import {Link} from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
+import styles from "./../styles/PaletteStyles";
+
 class MoreShades extends Component{
 	constructor(props){
 		super(props);
@@ -27,17 +30,20 @@ class MoreShades extends Component{
 	render(){
 		const {format} = this.state;
 		const {paletteName, emoji, id} = this.props.palette;
+		const {classes} = this.props;
+
 		const colorBoxes = this.shades.map(color => (
 			<ColorBox key={color.name} name={color.name} background={color[format]} showLink={false}/>
 		));
+
 		return(
-			<div className="MoreShades Palette">
+			<div className={classes.palette}>
 				<NavBar changeFormat={this.handleFormatChange} showingAllColors={false}/>
-				<div className="Palette-colors">
+				<div className={classes.paletteColors}>
 					{/*Palette Colors*/}
 					{colorBoxes}
-					<div className="goBack ColorBox">
-						<Link className="back-button" to={`/palette/${id}`}>Go Back</Link>
+					<div className={`${classes.goBack}`}>
+						<Link className={classes.backButton} to={`/palette/${id}`}>Go Back</Link>
 					</div>
 				</div>
 
@@ -47,4 +53,4 @@ class MoreShades extends Component{
 	}
 }
 
-export default MoreShades;
+export default withStyles(styles)(MoreShades);
