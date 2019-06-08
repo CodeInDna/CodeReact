@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-// import Slider from 'rc-slider';
-// import 'rc-slider/assets/index.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';	    /*Custom css*/
 import Nouislider from "nouislider-react";			/*Slider*/
-import "nouislider/distribute/nouislider.css";		/*Slider*/
 import MenuItem from '@material-ui/core/MenuItem';  /*Select*/
 import Select from '@material-ui/core/Select';		/*Select*/
 import Snackbar from '@material-ui/core/Snackbar';  /*The popup after changing format*/
 import CloseIcon from '@material-ui/icons/Close';   /*The popup after changing format*/
 import IconButton from '@material-ui/core/IconButton';
-import './../css/NavBar.css';					    /*Custom css*/
 
+
+import styles from "./../styles/NavBarStyles";
+import "nouislider/distribute/nouislider.css";		/*Slider*/
+
+ 
 class NavBar extends Component{
 	constructor(props){
 		super(props);
@@ -26,18 +28,18 @@ class NavBar extends Component{
 		this.setState({open: false})
 	}
 	render(){
-		const {level, changeLevel, showingAllColors} = this.props;
+		const {level, changeLevel, showingAllColors, classes} = this.props;
 		const {format, open} = this.state;
 		return(
-			<header className="NavBar">
-				<div className="logo">
+			<header className={classes.navBar}>
+				<div className={classes.logo}>
 					<Link to="/">ReactColorPicker</Link>
 				</div>
 
 				{showingAllColors && (
 					<div className="slider-container">
 						<span>Level: {level} </span>
-						<div className="slider">
+						<div className={classes.slider}>
 							{/*Slider*/}
 							<Nouislider range={{ min: 100, max: 900 }}  start={level} connect={[true, false]} step={100} 
 							onChange={changeLevel}/>
@@ -45,7 +47,7 @@ class NavBar extends Component{
 					</div>
 				)}
 
-				<div className="select-container">
+				<div className={classes.selectContainer}>
 		        <Select value={format} onChange={this.handleFormatChange}>
 		          <MenuItem value='hex'>Hex - #ffffff</MenuItem>
 		          <MenuItem value='rgb'>RGB - rgb(255, 255, 255)</MenuItem>
@@ -81,4 +83,4 @@ class NavBar extends Component{
 	}
 }
 
-export default NavBar;
+export default withStyles(styles)(NavBar);
