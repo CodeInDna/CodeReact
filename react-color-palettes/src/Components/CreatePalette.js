@@ -90,6 +90,7 @@ class CreatePalette extends Component{
 		this.createNewColor = this.createNewColor.bind(this);
 		this.handleNameChange = this.handleNameChange.bind(this);
 		this.savePalette = this.savePalette.bind(this);
+		this.deleteColorBox = this.deleteColorBox.bind(this);
 	}
 
 
@@ -139,6 +140,11 @@ class CreatePalette extends Component{
     	}
     	this.props.savePalette(newPalette);
     	this.props.history.push('/');
+    }
+    deleteColorBox(colorName){
+    	this.setState({
+    		colors: this.state.colors.filter(color => color.name !== colorName)
+    	});
     }
   render() {
     const { classes, theme } = this.props;
@@ -233,7 +239,12 @@ class CreatePalette extends Component{
         >
           <div className={classes.drawerHeader}/>
           	{this.state.colors.map(color => (
-          		<DraggableColorBoxes color={color.color} name={color.name} />
+          		<DraggableColorBoxes 
+          			key={color.name} 
+          			color={color.color} 
+          			name={color.name} 
+          			deleteColorBox={() => this.deleteColorBox(color.name)}
+          		/>
           	))}
         </main>
       </div>
