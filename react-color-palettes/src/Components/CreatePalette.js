@@ -88,6 +88,7 @@ class CreatePalette extends Component{
 		this.handleColorChange = this.handleColorChange.bind(this);
 		this.createNewColor = this.createNewColor.bind(this);
 		this.handleNameChange = this.handleNameChange.bind(this);
+		this.savePalette = this.savePalette.bind(this);
 	}
 
 
@@ -120,6 +121,16 @@ class CreatePalette extends Component{
             	({color}) => color !== this.state.currentColor
             );
         });
+    };
+    savePalette(){
+    	let newPaletteName = "New Test Palette";
+    	const newPalette = {
+    		id: newPaletteName.toLowerCase().replace(/ /g, '-'),
+    		paletteName: newPaletteName,
+    		colors: this.state.colors
+    	}
+    	this.props.savePalette(newPalette);
+    	this.props.history.push('/');
     }
   render() {
     const { classes, theme } = this.props;
@@ -130,6 +141,7 @@ class CreatePalette extends Component{
         <CssBaseline />
         <AppBar
           position="fixed"
+          color="default"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
@@ -146,6 +158,11 @@ class CreatePalette extends Component{
             <Typography variant="h6" color="inherit" noWrap>
               Persistent drawer
             </Typography>
+
+            <Button variant="contained" color="primary" onClick={this.savePalette}>
+            	Save Palette
+            </Button>
+
           </Toolbar>
         </AppBar>
         <Drawer
