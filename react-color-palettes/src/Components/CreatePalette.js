@@ -14,6 +14,8 @@ import Button from '@material-ui/core/Button';
 import DraggableColorBoxes from './DraggableColorBoxes';
 import { ChromePicker } from 'react-color';		/*Color Picker*/
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import DraggableColorList from './DraggableColorList';
+import {arrayMove} from 'react-sortable-hoc';
 
 const drawerWidth = 400;
 
@@ -75,13 +77,14 @@ const styles = theme => ({
   },
 });
 class CreatePalette extends Component{
+	static defaultProps ={ maxColors: 20 }
 	constructor(props){
 		super(props);
 		this.state= {
 			open: true,
 			currentColor: "teal",
 			newColorName: "",
-			colors: [],
+			colors: this.props.palettes[0].colors,
 			newPaletteName: ""
 		}
 		this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
@@ -91,6 +94,8 @@ class CreatePalette extends Component{
 		this.handleNameChange = this.handleNameChange.bind(this);
 		this.savePalette = this.savePalette.bind(this);
 		this.deleteColorBox = this.deleteColorBox.bind(this);
+		this.clearPaletteColors = this.clearPaletteColors.bind(this);
+		this.getRandomColor = this.getRandomColor.bind(this);
 	}
 
 
@@ -145,11 +150,26 @@ class CreatePalette extends Component{
     	this.setState({
     		colors: this.state.colors.filter(color => color.name !== colorName)
     	});
-    }
+    };
+    // Change the ColorBox place when dragged
+    onSortEnd = ({oldIndex, newIndex}) => {
+	    this.setState(({colors}) => ({
+	      colors: arrayMove(colors, oldIndex, newIndex),
+	    }));
+	};
+	clearPaletteColors(){
+		this.setState({colors: []});
+	};
+	getRandomColor(){
+		// pick Random Colors from existing palettes
+		const allColors = this.props.palettes.map(palette =>palette.colors).flat();
+		const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+		this.setState({colors: [...this.state.colors, randomColor]});
+	}
   render() {
-    const { classes, theme } = this.props;
-    const { open } = this.state;
-
+    const { classes, theme, maxColors } = this.props;
+    const { open, colors } = this.state;
+    const paletteFull = colors.length >= maxColors;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -205,8 +225,19 @@ class CreatePalette extends Component{
           <Divider />
           <Divider />
           <div>
-          	<Button variant="contained" color="secondary">Clear Palette</Button>
-          	<Button variant="contained" color="primary">Random Color</Button>
+          	<Button 
+	          	variant="contained" 
+	          	color="secondary"
+	          	onClick={this.clearPaletteColors}
+	          	>Clear Palette
+	        </Button>
+          	<Button 
+	          	variant="contained" 
+	          	color="primary"
+	          	disabled={paletteFull}
+	          	onClick={this.getRandomColor}
+	          	>Random Color
+	        </Button>
           </div>
 
           <ChromePicker color={this.state.currentColor} 
@@ -225,9 +256,10 @@ class CreatePalette extends Component{
 	          		variant="contained" 
 	          		type="submit"
 	          		color="primary" 
-	          		style={{backgroundColor: this.state.currentColor}}
+	          		disabled={paletteFull}
+	          		style={{backgroundColor: paletteFull ? "grey" : this.state.currentColor}}
 	          		>
-	          		Add New Color
+	          		{paletteFull ? 'Palette is Full' : 'Add New Color'}
 	          	</Button>
           </ValidatorForm>
 
@@ -238,14 +270,13 @@ class CreatePalette extends Component{
           })}
         >
           <div className={classes.drawerHeader}/>
-          	{this.state.colors.map(color => (
-          		<DraggableColorBoxes 
-          			key={color.name} 
-          			color={color.color} 
-          			name={color.name} 
-          			deleteColorBox={() => this.deleteColorBox(color.name)}
-          		/>
-          	))}
+          
+          <DraggableColorList 
+          		colors={colors} 
+          		deleteColorBox={this.deleteColorBox}
+          		axis="xy"
+          		onSortEnd={this.onSortEnd}
+          />
         </main>
       </div>
     );
