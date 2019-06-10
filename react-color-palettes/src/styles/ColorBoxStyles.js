@@ -9,7 +9,7 @@ export default{
 		margin: "0 auto",
 		position: "relative",
 		cursor: "pointer",
-		marginBottom: "-3.8px",
+		marginBottom: "-4px",
 		"&:hover button": {
 			opacity: "1",
 			transitionDuration: "0.8s",
@@ -24,7 +24,7 @@ export default{
 		},
 		[sizes.down("xs")]: {
 			width: "100%",
-			height: props => props.showLink ? "5%" : "10%",
+			height: props => props.showLink ? "7%" : "10%",
 		}
 	},
 	copyText: {
