@@ -99,12 +99,9 @@ class CreatePalette extends Component{
   	this.setState({colors: [...this.state.colors, newColor], newColorName: ""});
   };
  
-    savePalette(newPaletteName){
-    	const newPalette = {
-    		id: newPaletteName.toLowerCase().replace(/ /g, '-'),
-    		paletteName: newPaletteName,
-    		colors: this.state.colors
-    	}
+    savePalette(newPalette){
+      newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-');
+      newPalette.colors = this.state.colors;
     	this.props.savePalette(newPalette);
     	this.props.history.push('/');
     }

@@ -58,10 +58,15 @@ class CreatePaletteNavBar extends Component{
 		super(props);
 		this.state = {formShowing:false};
 		this.showForm = this.showForm.bind(this);
+		this.hideForm = this.hideForm.bind(this);
 	}
 
 	showForm(){
 		this.setState({formShowing: true});
+	}
+
+	hideForm(){
+		this.setState({formShowing: false});
 	}
 	render(){
 	const {classes, open, handleDrawerOpen, savePalette, palettes} = this.props;
@@ -102,7 +107,7 @@ class CreatePaletteNavBar extends Component{
 	            </div>
 		        </AppBar>
 		            
-		        {formShowing && <PaletteMataForm savePalette={savePalette} palettes={palettes}/>}
+		        {formShowing && <PaletteMataForm savePalette={savePalette} palettes={palettes} hideForm={this.hideForm}/>}
 			</div>
 		)
 	}
