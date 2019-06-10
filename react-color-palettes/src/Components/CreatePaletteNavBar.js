@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PaletteMataForm from './PaletteMataForm';
 import classNames from 'clsx';
 import {Link} from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
@@ -9,31 +10,64 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+
+const drawerWidth = 400;
+const styles = theme => ({
+	root: {
+		display: "flex"
+	},
+	appBar: {
+	    transition: theme.transitions.create(['margin', 'width'], {
+	      easing: theme.transitions.easing.sharp,
+	      duration: theme.transitions.duration.leavingScreen,
+	    }),
+	    flexDirection: "row",
+	    justifyContent: "space-between",
+	    alignItems: "center"
+
+	  },
+	appBarShift: {
+	    width: `calc(100% - ${drawerWidth}px)`,
+	    marginLeft: drawerWidth,
+	    transition: theme.transitions.create(['margin', 'width'], {
+	      easing: theme.transitions.easing.easeOut,
+	      duration: theme.transitions.duration.enteringScreen,
+	    }),
+	  },
+	menuButton: {
+	    marginLeft: 12,
+	    marginRight: 20,
+	  },
+    hide: {
+      display: 'none',
+    },
+    navBtns:{
+    	marginRight: "1rem",
+    	"& a":{
+    		textDecoration: "none"
+    	}
+    },
+    btn: {
+    	margin: "0 0.5rem",
+    }
+
+});
 
 class CreatePaletteNavBar extends Component{
 	constructor(props){
 		super(props);
-		this.state = {
-			newPaletteName: ""
-		}
-		this.handleNameChange = this.handleNameChange.bind(this);
+		this.state = {formShowing:false};
+		this.showForm = this.showForm.bind(this);
 	}
-	componentDidMount(){
-		 ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
-            return this.props.palettes.every(
-            	({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase()
-            );
-        });
-	}
-	// Palette Name Change: update the state
-	handleNameChange(evt){
-		this.setState({newPaletteName: evt.target.value})
+
+	showForm(){
+		this.setState({formShowing: true});
 	}
 	render(){
-	const {classes, open, handleDrawerOpen, handleNameChange, savePalette} = this.props;
+	const {classes, open, handleDrawerOpen, savePalette, palettes} = this.props;
+	const {formShowing} = this.state;
 		return(
-			<div>
+			<div className={classes.root}>
 				<CssBaseline />
 		        <AppBar
 		          position="fixed"
@@ -52,32 +86,25 @@ class CreatePaletteNavBar extends Component{
 		              <MenuIcon />
 		            </IconButton>
 		            <Typography variant="h6" color="inherit" noWrap>
-		              Persistent drawer
+		              Create a Palette
 		            </Typography>
-
-		            <ValidatorForm onSubmit={() => savePalette(this.state.newPaletteName)}>
-			            <TextValidator 
-			            	label="Palette Name"  
-			            	value={this.state.newPaletteName}
-			            	name="newPaletteName" 
-			            	onChange={this.handleNameChange}
-			            	validators={['required', 'isPaletteNameUnique']}
-		                    errorMessages={['Enter a Color Name', 'Palette Name already exist!']}
-			            />
-			            <Button variant="contained" color="primary" type="submit">
-			            	Save Palette
-			            </Button>
-
-			            <Link to='/'>
-				            <Button variant="contained" color="secondary">
-				            	Go Back
-				            </Button>
-			            </Link>
-		            </ValidatorForm>
 		          </Toolbar>
+
+	            <div className={classes.navBtns}>
+		            <Link to='/'>
+			            <Button variant="contained" color="secondary" className={classes.btn}>
+			            	Go Back
+			            </Button>
+		            </Link>
+		            <Button variant="contained" color="primary" onClick={this.showForm} className={classes.btn}>
+			          Save
+			        </Button>
+	            </div>
 		        </AppBar>
+		            
+		        {formShowing && <PaletteMataForm savePalette={savePalette} palettes={palettes}/>}
 			</div>
 		)
 	}
 }
-export default CreatePaletteNavBar;
+export default withStyles(styles, { withTheme: true })(CreatePaletteNavBar);

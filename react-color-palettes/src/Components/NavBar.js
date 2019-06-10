@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import styles from "./../styles/NavBarStyles";
 import "nouislider/distribute/nouislider.css";		/*Slider*/
 
- 
 class NavBar extends Component{
 	constructor(props){
 		super(props);

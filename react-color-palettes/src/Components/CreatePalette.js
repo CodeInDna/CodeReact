@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import CreatePaletteNavBar from './CreatePaletteNavBar';
 import ColorPickerForm from './ColorPickerForm';
 import classNames from 'clsx';
-import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import DraggableColorList from './DraggableColorList';
 import {arrayMove} from 'react-sortable-hoc';
@@ -17,33 +18,15 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
-  },
-  hide: {
-    display: 'none',
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   },
   drawerHeader: {
     display: 'flex',
@@ -69,6 +52,22 @@ const styles = theme => ({
     }),
     marginLeft: 0,
   },
+  container: {
+  	width: "90%",
+  	height: "100%",
+  	display: "flex",
+  	flexDirection: "column",
+  	justifyContent: "center",
+  	alignItems: "center"
+  },
+  btns: {
+  	width: "100%",
+  	display: "flex",
+  	justifyContent: "space-between"
+  },
+  btn: {
+  	width: "48%"
+  }
 });
 class CreatePalette extends Component{
 	static defaultProps ={ maxColors: 20 }
@@ -130,7 +129,7 @@ class CreatePalette extends Component{
 		this.setState({colors: [...this.state.colors, randomColor]});
 	}
   render() {
-    const { classes, theme, maxColors, palettes} = this.props;
+    const { classes, maxColors, palettes} = this.props;
     const { open, colors } = this.state;
     const paletteFull = colors.length >= maxColors;
     return (
@@ -138,7 +137,6 @@ class CreatePalette extends Component{
       	{/*NavBar*/}
         <CreatePaletteNavBar 
         	open={open} 
-        	classes={classes}
         	palettes={palettes}
         	handleDrawerOpen={this.handleDrawerOpen}
         	savePalette={this.savePalette}
@@ -161,15 +159,20 @@ class CreatePalette extends Component{
           </div>
           <Divider />
           <Divider />
-          <div>
+
+    	<div className={classes.container}>
+    	  <Typography variant="h4" gutterBottom >Design Your Palette</Typography>
+          <div className={classes.btns}>
           	<Button 
 	          	variant="contained" 
+	          	className={classes.btn}
 	          	color="secondary"
 	          	onClick={this.clearPaletteColors}
 	          	>Clear Palette
 	        </Button>
           	<Button 
 	          	variant="contained" 
+	          	className={classes.btn}
 	          	color="primary"
 	          	disabled={paletteFull}
 	          	onClick={this.getRandomColor}
@@ -180,8 +183,10 @@ class CreatePalette extends Component{
          {/*Color Picker Form*/}
          <ColorPickerForm paletteFull={paletteFull} createNewColor={this.createNewColor} colors={this.state.colors}/>
          {/*Color Picker Form Ends*/}
+        </div>
 
         </Drawer>
+
         <main
           className={classNames(classes.content, {
             [classes.contentShift]: open,
