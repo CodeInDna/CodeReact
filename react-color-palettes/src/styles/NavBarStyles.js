@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 export default{
 	navBar:{
 		display: "flex",
@@ -18,6 +20,9 @@ export default{
 		"& a":{
 			textDecoration: "none",
 			color: "black",
+		},
+		[sizes.down("xs")]:{
+			display:"none"
 		}
 	},
 	slider:{
@@ -58,6 +63,9 @@ export default{
 		},
 		"& .MuiInput-underline:hover:not(.Mui-disabled):before": {
 		    borderBottom: "2px solid #34919a !important",
+		},
+		[sizes.down("md")]:{
+			width: "150px"
 		}
 	},
 	selectContainer:{
