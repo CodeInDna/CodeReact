@@ -11,64 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import DraggableColorList from './DraggableColorList';
 import {arrayMove} from 'react-sortable-hoc';
+import styles from './../styles/CreatePaletteStyles';
 
-const drawerWidth = 400;
-
-const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  content: {
-  	height: "calc(100vh - 64px)",
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-  container: {
-  	width: "90%",
-  	height: "100%",
-  	display: "flex",
-  	flexDirection: "column",
-  	justifyContent: "center",
-  	alignItems: "center"
-  },
-  btns: {
-  	width: "100%",
-  	display: "flex",
-  	justifyContent: "space-between"
-  },
-  btn: {
-  	width: "48%"
-  }
-});
 class CreatePalette extends Component{
 	static defaultProps ={ maxColors: 20 }
 	constructor(props){
@@ -99,22 +43,22 @@ class CreatePalette extends Component{
   	this.setState({colors: [...this.state.colors, newColor], newColorName: ""});
   };
  
-    savePalette(newPalette){
-      newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-');
-      newPalette.colors = this.state.colors;
-    	this.props.savePalette(newPalette);
-    	this.props.history.push('/');
-    }
-    deleteColorBox(colorName){
-    	this.setState({
-    		colors: this.state.colors.filter(color => color.name !== colorName)
-    	});
-    };
-    // Change the ColorBox place when dragged
-    onSortEnd = ({oldIndex, newIndex}) => {
-	    this.setState(({colors}) => ({
-	      colors: arrayMove(colors, oldIndex, newIndex),
-	    }));
+  savePalette(newPalette){
+    newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-');
+    newPalette.colors = this.state.colors;
+  	this.props.savePalette(newPalette);
+  	this.props.history.push('/');
+  }
+  deleteColorBox(colorName){
+  	this.setState({
+  		colors: this.state.colors.filter(color => color.name !== colorName)
+  	});
+  };
+  // Change the ColorBox place when dragged
+  onSortEnd = ({oldIndex, newIndex}) => {
+    this.setState(({colors}) => ({
+      colors: arrayMove(colors, oldIndex, newIndex),
+    }));
 	};
 	clearPaletteColors(){
 		this.setState({colors: []});
