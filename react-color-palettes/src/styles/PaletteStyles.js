@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 export default{
 	palette: {
 		height: "100vh",
@@ -8,8 +10,8 @@ export default{
 		height: "90%",
 	},
 	goBack:{
-		height: "50%",
 		width: "20%",
+		height: "50%",
 		display: "inline-block",
 		margin: "0 auto",
 		position: "relative",
@@ -35,6 +37,18 @@ export default{
 			textTransform: "uppercase",
 			cursor: "pointer", 
 			textDecoration: "none",
-		}
+		},
+		[sizes.down("lg")]: {
+			width: "25%",
+			height: "50%"
+		},
+		[sizes.down("md")]: {
+			width: "50%",
+			height: "20%"
+		},
+		[sizes.down("xs")]: {
+			width: "100%",
+			height: "10%"
+		},
 	}
 }

@@ -16,6 +16,7 @@ class App extends Component {
 		}
 		this.savePalette = this.savePalette.bind(this);
 		this.findPalette = this.findPalette.bind(this);
+		this.deletePalette = this.deletePalette.bind(this);
 	}
 
 	findPalette(id){
@@ -33,11 +34,21 @@ class App extends Component {
 			JSON.stringify(this.state.palettes)
 		);
 	}
+
+	deletePalette(id){
+		console.log(id)
+		this.setState(currState => ({
+			palettes: currState.palettes.filter(palette => palette.id !== id)
+		}),
+		this.syncLocalStorage
+		)
+		console.log(this.state.palettes)
+	}
 	render(){
 		  return (
 		  	<Switch>
 			  	<Route exact path='/palette/create' render={(routeProps) => <CreatePalette palettes={this.state.palettes} savePalette={this.savePalette} {...routeProps}/>}/>
-			  	<Route exact path='/' render={(routeProps) => <PaletteList palettes={this.state.palettes} {...routeProps}/>}/>
+			  	<Route exact path='/' render={(routeProps) => <PaletteList palettes={this.state.palettes} deletePalette={this.deletePalette} {...routeProps}/>}/>
 			  	<Route exact path='/palette/:id' render={(routeProps) => <Palette palette={generateColors(this.findPalette(routeProps.match.params.id), 10)}/>}/>
 			  	<Route exact path='/palette/:paletteId/:colorId' render={(routeProps) => 
 			  		<MoreShades colorId={routeProps.match.params.colorId} palette={generateColors(this.findPalette(routeProps.match.params.paletteId), 10)}/>}
