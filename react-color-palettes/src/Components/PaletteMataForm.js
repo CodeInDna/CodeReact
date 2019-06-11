@@ -40,6 +40,7 @@ class PaletteMataForm extends Component{
   savePalette(emoji){
     const newPalette = {paletteName: this.state.newPaletteName, emoji: emoji.native}
     this.props.savePalette(newPalette);
+    this.setState({stage: ""}); // disappear emoji picker after saving palette
   }
   render() {
   	const {newPaletteName, stage} = this.state;
