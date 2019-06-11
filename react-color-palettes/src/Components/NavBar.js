@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/styles';	    /*Custom css*/
 import Nouislider from "nouislider-react";			/*Slider*/
 import MenuItem from '@material-ui/core/MenuItem';  /*Select*/
 import Select from '@material-ui/core/Select';		/*Select*/
 import Snackbar from '@material-ui/core/Snackbar';  /*The popup after changing format*/
 import CloseIcon from '@material-ui/icons/Close';   /*The popup after changing format*/
 import IconButton from '@material-ui/core/IconButton';
+import { withStyles } from '@material-ui/styles';	    /*Custom css*/
 
 
 import styles from "./../styles/NavBarStyles";

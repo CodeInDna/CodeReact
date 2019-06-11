@@ -34,7 +34,7 @@ export default{
 			border: "none",
 		},
 		"& .noUi-target .noUi-base": {
-			background: "linear-gradient(117deg,#c9edf1 0, #ade4ea 25%, #76ced7 50%, #56afb8 75%, #34919a 100%)",
+			background: "linear-gradient(117deg,#cecece 0, #AFAFAF 25%, #616C86 50%, #4E5973 75%, #47526C 100%)",
 			border: "none",
 			borderRadius: "15px",
 			cursor: "pointer",
@@ -43,7 +43,7 @@ export default{
 			background: "none",
 		},
 		"& .noUi-handle.noUi-handle-lower": {
-			background: "#34919a",
+			background: "#47526C",
 			borderRadius: "20px",
 			width: "25px",
 			height: "25px",
@@ -62,7 +62,7 @@ export default{
 			display: "none",
 		},
 		"& .MuiInput-underline:hover:not(.Mui-disabled):before": {
-		    borderBottom: "2px solid #34919a !important",
+		    borderBottom: "2px solid #47526C !important",
 		},
 		[sizes.down("md")]:{
 			width: "150px"

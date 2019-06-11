@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import CreatePaletteNavBar from './CreatePaletteNavBar';
 import ColorPickerForm from './ColorPickerForm';
+import seedPalettes from './../seedPalettes';
 import classNames from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import DraggableColorList from './DraggableColorList';
 import {arrayMove} from 'react-sortable-hoc';
+import { withStyles } from '@material-ui/core/styles';
 import styles from './../styles/CreatePaletteStyles';
 
 class CreatePalette extends Component{
@@ -19,7 +20,7 @@ class CreatePalette extends Component{
 		super(props);
 		this.state= {
 			open: true,
-			colors: this.props.palettes[0].colors
+			colors: seedPalettes[0].colors
 		}
 		this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
 		this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -66,7 +67,12 @@ class CreatePalette extends Component{
 	getRandomColor(){
 		// pick Random Colors from existing palettes
 		const allColors = this.props.palettes.map(palette =>palette.colors).flat();
-		const randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+    let colorIsDuplicate = true;
+    let randomColor;
+    while(colorIsDuplicate){
+      randomColor = allColors[Math.floor(Math.random() * allColors.length)];
+      colorIsDuplicate = this.state.colors.some(color => color.name === randomColor.name);
+    }
 		this.setState({colors: [...this.state.colors, randomColor]});
 	}
   render() {
@@ -122,7 +128,7 @@ class CreatePalette extends Component{
           </div>
 
          {/*Color Picker Form*/}
-         <ColorPickerForm paletteFull={paletteFull} createNewColor={this.createNewColor} colors={this.state.colors}/>
+         <ColorPickerForm paletteFull={paletteFull} createNewColor={this.createNewColor} colors={colors}/>
          {/*Color Picker Form Ends*/}
         </div>
 

@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import MiniPalettes from './MiniPalettes';
 import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/styles';
-import styles from "./../styles/PaletteListStyles";
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -15,6 +13,8 @@ import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
+import styles from "./../styles/PaletteListStyles";
+import { withStyles } from '@material-ui/styles';
 
 class PaletteList extends Component{
 	constructor(props){
@@ -26,8 +26,10 @@ class PaletteList extends Component{
 		this.openDialog = this.openDialog.bind(this);
 		this.closeDialog = this.closeDialog.bind(this);
 		this.handleDeletePalette = this.handleDeletePalette.bind(this);
+		this.handlePaletteClick = this.handlePaletteClick.bind(this);
 	}
 	handlePaletteClick(id){
+
 		this.props.history.push(`/palette/${id}`)
 	}
 	openDialog(id){
@@ -41,8 +43,8 @@ class PaletteList extends Component{
 		this.closeDialog();
 	}
 	render(){
-		const {palettes, classes, deletePalette} = this.props;
-		const {openDeleteDialog, deletingId} = this.state;
+		const {palettes, classes} = this.props;
+		const {openDeleteDialog} = this.state;
 		return(
 			<div className={classes.root}>
 				<div className={classes.container}>
@@ -55,11 +57,10 @@ class PaletteList extends Component{
 							<CSSTransition key={palette.id} classNames='fade' timeout={500}>
 								<MiniPalettes 
 								key={palette.id} 
-								id={palette.id} 
-								// deletePalette={deletePalette} 
+								id={palette.id}  
 								{...palette} 
 								openDialog={this.openDialog}
-								selectPalette={() => this.handlePaletteClick(palette.id)}/>
+								selectPalette={this.handlePaletteClick}/>
 							</CSSTransition>
 						))}
 					</TransitionGroup>
