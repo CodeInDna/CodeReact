@@ -36,13 +36,11 @@ class App extends Component {
 	}
 
 	deletePalette(id){
-		console.log(id)
 		this.setState(currState => ({
 			palettes: currState.palettes.filter(palette => palette.id !== id)
 		}),
 		this.syncLocalStorage
 		)
-		console.log(this.state.palettes)
 	}
 	render(){
 		  return (
