@@ -1,3 +1,10 @@
+# Context App
+----------------------------------------------------------------------------------------------------
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.<br>
+In this App, we are using Contexts with hooks to update multiple Components based of input.
+
+----------------------------------------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

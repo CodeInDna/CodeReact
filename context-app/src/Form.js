@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useContext} from 'react';
 import {LanguageContext} from './Contexts/LanguageContext';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -36,20 +36,19 @@ const words = {
 		rememberme: "મને યાદ રાખો"
 	}
 }
-class Form extends Component{
-	static contextType = LanguageContext;
-	render(){
-		const {classes} = this.props;
-		const {language, changeLang} = this.context;
-		const {email, password, signin, rememberme} = words[language];
-		return(
-			<main className={classes.main}>
+
+function Form(props){
+	const {language, updateLanguage} = useContext(LanguageContext);
+	const {classes} = props;
+	const {email, password, signin, rememberme} = words[language];
+	return(
+		<main className={classes.main}>
 				<Paper className={classes.paper}>
 					<Avatar className={classes.avatar}>
 						<LockOutlined/>
 					</Avatar>
 					<Typography variant="h5">{signin}</Typography>
-					<Select value={language} onChange={changeLang}>
+					<Select value={language} onChange={updateLanguage}>
 						<MenuItem value="english">English</MenuItem>
 						<MenuItem value="hindi">Hindi</MenuItem>
 						<MenuItem value="gujarati">Gujarati</MenuItem>
@@ -68,8 +67,7 @@ class Form extends Component{
 					</form>
 				</Paper>
 			</main>
-		)
-	}
+	)
 }
 
 export default withStyles(styles)(Form);
